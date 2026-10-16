@@ -3,7 +3,7 @@ interface FooterProps {
 }
 
 function Footer({ children }: FooterProps) {
-  return <footer>{children}</footer>;
+  return <footer className="footer">{children}</footer>;
 }
 
 export default Footer;

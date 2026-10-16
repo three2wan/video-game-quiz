@@ -33,7 +33,7 @@ function Question({ question, dispatch, answer }: QuestionProps) {
   const hasAnswered = answer !== "";
 
   return (
-    <div>
+    <div className="question">
       <h4>{decodeHtml(question.question)}</h4>
       <div className="options">
         {options.map((option) => (

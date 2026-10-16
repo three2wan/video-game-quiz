@@ -25,6 +25,7 @@ html {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--color-light);
   background-color: var(--color-darkest);
   padding: 3.2rem;
@@ -38,11 +39,13 @@ body {
 }
 
 .main {
-  width: 50rem;
+  width: 100%;
+  max-width: 50rem;
 }
 
 .app-header {
-  width: 70rem;
+  width: 100%;
+  max-width: 70rem;
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
@@ -64,16 +67,16 @@ img {
 
 h1 {
   font-family: "Codystar";
-  font-size: 5.6rem;
+  font-size: clamp(3rem, 8vw, 5.6rem);
 }
 
 h2 {
-  font-size: 3.6rem;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
   margin-bottom: 2rem;
 }
 
 h3 {
-  font-size: 2.4rem;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
   font-weight: 600;
   margin-bottom: 4rem;
 }
@@ -129,12 +132,14 @@ progress {
   transition: 0.3s;
 }
 
-.btn:not([disabled]):hover {
-  background-color: var(--color-darkest);
-}
+@media (hover: hover) {
+  .btn:not([disabled]):hover {
+    background-color: var(--color-darkest);
+  }
 
-.btn-option:not([disabled]):hover {
-  transform: translateX(1.2rem);
+  .btn-option:not([disabled]):hover {
+    transform: translateX(1.2rem);
+  }
 }
 
 .btn[disabled]:hover {
@@ -155,6 +160,7 @@ progress {
 .btn-option {
   width: 100%;
   text-align: left;
+  border-radius: 2.6rem;
 }
 
 .btn-option.correct {
@@ -177,7 +183,7 @@ progress {
   color: var(--color-light);
   border-radius: 100px;
   text-align: center;
-  padding: 2rem 0;
+  padding: 2rem 2.4rem;
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.6rem;
@@ -203,6 +209,12 @@ progress {
 
   color: var(--color-medium);
   font-size: 1.4rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .timer {
@@ -251,6 +263,93 @@ progress {
       0% 50%,
       50% 50%,
       100% 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  .app-header img {
+    width: 9rem;
+  }
+
+  body,
+  #root,
+  .app,
+  .main:has(.quiz, .screen),
+  .quiz,
+  .question,
+  .screen {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #root,
+  .app,
+  .main,
+  .quiz,
+  .question,
+  .screen {
+    flex: 1;
+  }
+
+  .question h4,
+  .screen-content {
+    margin-block: auto;
+    padding-bottom: 2.4rem;
+  }
+
+  .screen-content > :last-child {
+    margin-bottom: 0;
+  }
+
+  .screen .btn-ui {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1.6rem;
+  }
+
+  .app-header {
+    margin-bottom: 2.4rem;
+  }
+
+  h4 {
+    font-size: 1.9rem;
+  }
+
+  .progress {
+    margin-bottom: 2.4rem;
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    font-size: 1.8rem;
+  }
+
+  .answer {
+    transform: translateX(1.2rem);
+  }
+
+  .timer {
+    font-size: 1.6rem;
+    padding: 1.35rem 2rem;
+  }
+
+  .result,
+  .error {
+    border-radius: 2.4rem;
+  }
+
+  .result {
+    font-size: 1.8rem;
   }
 }
 

@@ -108,7 +108,7 @@ function App() {
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === "active" && (
-          <>
+          <div className="quiz">
             <Progress
               index={index}
               numQuestions={numQuestions}
@@ -130,7 +130,7 @@ function App() {
                 numQuestions={numQuestions}
               />
             </Footer>
-          </>
+          </div>
         )}
         {status === "finished" && (
           <FinishScreen
