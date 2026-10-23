@@ -1,12 +1,8 @@
-import type { Dispatch } from "react";
-import type { Action } from "../types/types";
+import { useQuiz } from "../contexts/QuizContext";
 
-interface StartScreenProps {
-  numQuestions: number;
-  dispatch: Dispatch<Action>;
-}
+function StartScreen() {
+  const { numQuestions, dispatch } = useQuiz();
 
-function StartScreen({ numQuestions, dispatch }: StartScreenProps) {
   return (
     <div className="screen">
       <div className="screen-content">

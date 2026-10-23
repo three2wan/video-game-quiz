@@ -1,3 +1,5 @@
+import type { Dispatch } from "react";
+
 export type QuestionType = {
   type: "multiple";
   difficulty: "easy" | "medium" | "hard";
@@ -5,6 +7,12 @@ export type QuestionType = {
   question: string;
   correct_answer: string;
   incorrect_answers: string[];
+};
+
+export type QuizContextType = State & {
+  numQuestions: number;
+  maxPossiblePoints: number;
+  dispatch: Dispatch<Action>;
 };
 
 export type State = {

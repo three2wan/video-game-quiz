@@ -1,21 +1,10 @@
-import { type Dispatch } from "react";
-import type { Action } from "../types/types";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
+import { useQuiz } from "../contexts/QuizContext";
 
-interface FinishScreenProps {
-  points: number;
-  maxPossiblePoints: number;
-  highscore: number;
-  dispatch: Dispatch<Action>;
-}
+function FinishScreen() {
+  const { points, maxPossiblePoints, highscore, dispatch } = useQuiz();
 
-function FinishScreen({
-  points,
-  maxPossiblePoints,
-  highscore,
-  dispatch,
-}: FinishScreenProps) {
   const percentagePoints = (points / maxPossiblePoints) * 100;
   const { width, height } = useWindowSize();
 

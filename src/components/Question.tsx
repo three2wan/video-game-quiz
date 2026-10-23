@@ -1,11 +1,5 @@
-import { useMemo, type Dispatch } from "react";
-import type { Action, QuestionType } from "../types/types";
-
-interface QuestionProps {
-  question: QuestionType;
-  dispatch: Dispatch<Action>;
-  answer: string;
-}
+import { useMemo } from "react";
+import { useQuiz } from "../contexts/QuizContext";
 
 function decodeHtml(html: string): string {
   const document = new DOMParser().parseFromString(html, "text/html");
@@ -24,13 +18,23 @@ function shuffle(array: string[]): string[] {
   return array;
 }
 
-function Question({ question, dispatch, answer }: QuestionProps) {
+function Question() {
+  const { questions, index, answer, dispatch } = useQuiz();
+  const question = questions.at(index);
+
+  console.log(question);
+
   // shuffle the options
   const options = useMemo(
-    () => shuffle([question.correct_answer, ...question.incorrect_answers]),
+    () =>
+      question
+        ? shuffle([question.correct_answer, ...question.incorrect_answers])
+        : [],
     [question],
   );
   const hasAnswered = answer !== "";
+
+  if (!question) return null;
 
   return (
     <div className="question">
